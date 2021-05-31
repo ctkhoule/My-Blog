@@ -33,4 +33,14 @@ class Post extends Model
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    // Recupere les commentaires valides
+    public function validComments(){
+        return $this->comments()->whereHas('user', function ($query) {
+            $query->whereValid(true);
+        });
+    }
 }
