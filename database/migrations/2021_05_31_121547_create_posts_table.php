@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->text('meta_description');
             $table->text('meta_keywords');
-            $table->boolean('avtive')->default(false);
+            $table->boolean('active')->default(false);
             $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
